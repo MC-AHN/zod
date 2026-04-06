@@ -5,7 +5,11 @@ const schema = z.object({
     age: z.number()
 });
 
-console.log(schema.safeParse({
+const result = schema.safeParse({
     name: "ari",
-    age: 25
-}));
+    age: "25"
+});
+
+if (!result.success) {
+    console.log(result.error.format());
+};
